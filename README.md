@@ -2,7 +2,8 @@ Interaction-For-Turtlebot
 ========== 
 How to complie  
 ----------  
-Git clone to your workspace,and make.  
+Make sure you have already install ROS and Turtlebot. The tutorial for installing ROS and Turtlebot: [installation](http://wiki.ros.org/)  
+Git clone to your workspace,and make. 
 
     cd ~/your_workspace/
     catkin_make
