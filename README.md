@@ -99,4 +99,36 @@ CMUSphinx is an open source package which aimed at offline speech recognition.
     * iat_publish_speak.cpp
     * tts_subscribe_speak.cpp
        
-            
+Image On ROS
+----------
+In this part, I make demos on how to ineract with the camera of computer. In order to imply this idea I wrote a program. Later I will explain what does it do.  
+First let's start with installtion:  
+
+        sudo apt-get install ros-kinetic-usb-cam
+        cd ~/<your_workspace>/src
+        git clone https://github.com/ros-perception/opencv_apps
+        cd ..
+        catkin_make  
+* Bring up:
+
+        [Astra] $ roslaunch astra_launch astra.launch
+        [kinect] $ roslaunch freenect_launch freenect-registered-xyzrgb.launch
+        [USB Camera] $ roscore| $ rosrun usb_cam usb_cam_node
+        [Multiple Astra] $ roslaunch rchomeedu_vision multi_astra.launch
+* Display RGB and Depth images:
+
+        rosrun image_view image_view image:=/camera/rgb/image_raw
+        [USB Camera] $ rosrun image_view image_view image:=/usb_cam/image_raw
+* Take photo:
+
+        Bring up camera
+        rosrun rchomeedu_vision take_photo.py
+        rosrun rchomeedu_vision take_photo_sub.py
+        rostopic pub -1 /take_photo std_msgs/String "take photo"
+        
+        
+* Files:
+    * facerecognition.py
+    * num_person_soundplay.py   
+
+The camera of computer will capture images in real time and recogize all faces appear in each frame. Then computer will use soundplay to speak out that there exist how many persons depending on the faces it recognized.
